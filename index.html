@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <title>📞&📧</title>
 </head>
 <body>
-  <div class="columns is-flex">
-   <div id="v-root" 
-       class="columns is-desktop is-multiline column is-offset-3-tablet is-6-tablet">
-        <article class="message is-primary column is-half is-marginless">
+    <div class="is-flex">
+        <div id="v-root" class="columns is-desktop is-multiline column is-offset-3-tablet is-6-tablet">
+            <div class="tabs is-toggle is-fullwidth is-large is-centered">
+                <ul>
+                    <li v-bind:class="[checkType == 'tel' ? 'is-active' : '']" @click="changeType('tel')">
+                        <a>
+                            <span class="icon"><i class="fas fa-phone" aria-hidden="true"></i></span>
+                            <span>Telephones</span>
+                        </a>
+                    </li>
+                    <li v-bind:class="[checkType == 'email' ? 'is-active' : '']" @click="changeType('email')">
+                        <a>
+                            <span class="icon"><i class="fas fa-at" aria-hidden="true"></i></span>
+                            <span>Emails</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <article class="message is-primary column is-half is-marginless">
                 <div class="message-header">
                     <p>List A</p>
                     <span>{{lenA}}</span>
@@ -23,56 +40,53 @@
                     </a>
                 </div>
                 <textarea name="inA" id="inA" cols="30" rows="9" class="textarea is-primary" autofocus
-                placeholder="380xxxxxxxxx" 
-                v-model="textA" @blur="calcA"></textarea>
-        </article>
-        <article class="message is-info column is-half is-marginless">
+                    placeholder="380xxxxxxxxx" v-model="textA" @blur="calcA"></textarea>
+            </article>
+            <article class="message is-info column is-half is-marginless">
                 <div class="message-header">
                     <p>List B</p>
                     <span>{{lenB}}</span>
                     <a class="button is-small" @click="checkArrs">
                         <span class="icon is-small">
-                                <i v-bind:class="startIco"></i>
+                            <i v-bind:class="startIco"></i>
                         </span>
                     </a>
                 </div>
-                <textarea name="inB" id="inB" cols="30" rows="9" class="textarea is-info" 
-                placeholder="380xxxxxxxxx" 
-                v-model="textB" @blur="calcB"></textarea>
-        </article>
-        <article class="message is-success column is-half is-marginless">
+                <textarea name="inB" id="inB" cols="30" rows="9" class="textarea is-info" placeholder="380xxxxxxxxx"
+                    v-model="textB" @blur="calcB"></textarea>
+            </article>
+            <article class="message is-success column is-half is-marginless">
                 <div class="message-header">
                     <p>Unique numbers</p>
                     <span>{{lenGood}}</span>
-                    <a class="button is-small" 
-                       @click="copyGood('good')"
-                       @focusout="misterProper">
+                    <a class="button is-small" @click="copyGood('good')" @focusout="misterProper">
                         <span class="icon is-small">
-                                <i v-bind:class="copyIco"></i>
+                            <i v-bind:class="copyIco"></i>
                         </span>
                     </a>
                 </div>
                 <textarea id="goodText" cols="30" rows="9" class="textarea is-success" readonly v-model="textGood">
                 </textarea>
-        </article>
-        <article class="message is-warning column is-half is-marginless">
-            <div class="message-header">
-                <p>Bad numbers</p>
-                <span>{{lenBad}}</span>
-                <a class="button is-small" @click="copyGood('bad')">
+            </article>
+            <article class="message is-warning column is-half is-marginless">
+                <div class="message-header">
+                    <p>Bad numbers</p>
+                    <span>{{lenBad}}</span>
+                    <a class="button is-small" @click="copyGood('bad')">
                         <span class="icon is-small">
-                                <i class="far fa-copy"></i>
+                            <i class="far fa-copy"></i>
                         </span>
-                </a>
-            </div>
-            <textarea id="badText" cols="30" rows="9" class="textarea is-warning" readonly v-model="textBad">
+                    </a>
+                </div>
+                <textarea id="badText" cols="30" rows="9" class="textarea is-warning" readonly v-model="textBad">
             </textarea>
-        </article>
-    </div>
-    
+            </article>
+        </div>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="./js/CopyDOM.js"></script>
     <script src="./js/app.js"></script>
 </body>
-</html>			
+
+</html>

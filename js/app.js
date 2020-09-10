@@ -12,7 +12,8 @@ let mv = new Vue({
         copyIco : "far fa-copy",
         startIco : "fas fa-flag-checkered",
         startIcoDefault : "fas fa-flag-checkered",
-        startIcoLoading : "fas fa-circle-notch fa-spin"
+        startIcoLoading : "fas fa-circle-notch fa-spin",
+        checkType : 'tel'
 
     },
     methods : {
@@ -54,14 +55,12 @@ let mv = new Vue({
             }
             
             let myCopy = new CopyDOM(cssName);
-//            console.log(myCopy.cssName);
             myCopy.copy();
             
             this.copyIco = copiedIco;
             
         },
         misterProper : function(){
-            console.log("Ту-ту-ту");
             this.copyIco = 'far fa-copy';
         },
         checkArrs : function(){
@@ -70,14 +69,12 @@ let mv = new Vue({
             
             let myMiner = new Worker('./js/miner.js');
 
-            myMiner.postMessage([this.textA, this.textB]);
+            myMiner.postMessage([this.textA, this.textB, this.checkType]);
             
             console.log("main: send 2 worker");
             
             myMiner.onmessage = function(msg){
-                //принимает от воркера
                 console.log("main: receiver from worker");
-//                console.log(msg.data);
                 
                 mv.lenGood = msg.data.lenGood;
                 mv.lenBad = msg.data.lenBad;
@@ -88,6 +85,9 @@ let mv = new Vue({
                 mv.startIco = mv.startIcoDefault;
 
             }
+        },
+        changeType : function(type = 'tel'){
+            this.checkType = type;
         }
     }
 });
