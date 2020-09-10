@@ -13,7 +13,8 @@ let mv = new Vue({
         startIco : "fas fa-flag-checkered",
         startIcoDefault : "fas fa-flag-checkered",
         startIcoLoading : "fas fa-circle-notch fa-spin",
-        checkType : 'tel'
+        checkType : 'tel',
+        placeholder : '380xxxxxxxxx'
 
     },
     methods : {
@@ -88,6 +89,7 @@ let mv = new Vue({
         },
         changeType : function(type = 'tel'){
             this.checkType = type;
+            this.placeholder = type === 'tel' ? '380xxxxxxxxx' : 'user@mail.com';
         }
     }
 });
