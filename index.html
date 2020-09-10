@@ -41,7 +41,7 @@
                         </a>
                     </div>
                     <textarea name="inA" id="inA" cols="30" rows="9" class="textarea is-primary" autofocus
-                        placeholder="380xxxxxxxxx" v-model="textA" @blur="calcA"></textarea>
+                       :placeholder="placeholder" v-model="textA" @blur="calcA"></textarea>
                 </article>
                 <article class="message is-info column is-half is-marginless">
                     <div class="message-header">
@@ -53,7 +53,7 @@
                             </span>
                         </a>
                     </div>
-                    <textarea name="inB" id="inB" cols="30" rows="9" class="textarea is-info" placeholder="380xxxxxxxxx"
+                    <textarea name="inB" id="inB" cols="30" rows="9" class="textarea is-info" :placeholder="placeholder"
                         v-model="textB" @blur="calcB"></textarea>
                 </article>
                 <article class="message is-success column is-half is-marginless">
